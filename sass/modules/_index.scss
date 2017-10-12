@@ -1,0 +1,211 @@
+// Section
+section {
+  padding: 80px 0;
+}
+
+@media (max-width:991px) {
+  section {
+    padding: 50px 0;
+  }
+}
+
+// Logo
+.logo {
+  display: block;
+  &__descr {
+    font-size: 18px;
+    font-family: $main_font_familyBold;
+    color: #fff;
+    position: relative;
+    bottom: 6px;
+  }
+}
+
+//Navigation
+.nav {
+  text-align: center;
+  &__list {
+    height: 50px;
+    text-align: justify;
+    padding: 0;
+    margin: 0;
+    font-size: 0;
+    list-style: none;
+    &:after {
+      content: "";
+      display: inline-block;
+      width: 100%;
+      height: 0;
+    }
+  }
+
+  &__item {
+    display: inline-block;
+    a {
+      color: #ffffff;
+      position: relative;
+      display: block;
+      font-size: 16px;
+      padding-bottom: 28px;
+      &:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 3px;
+        width: 100%;
+        background: none;
+        box-shadow: none;
+        transition: all .5s ease;
+      }
+      &:hover::after {
+        box-shadow: 0 0 20px rgba(134,204,32,1);
+        background: linear-gradient(to top,#80c925,#acdd00);
+      }
+    }
+  }
+
+}
+
+//Right Float
+.float-right {
+  float: right;
+}
+
+//Right text
+.right-text {
+  text-align: right;
+}
+
+//Titles
+.main-title {
+  text-align: center;
+  text-transform: uppercase;
+  font-family: $main_font_familyBold;
+  font-size: 40px;
+  color: #ffffff;
+}
+
+.sub-title {
+  color: #fff;
+  text-align: center;
+  font-size: 18px;
+  font-weight: normal;
+}
+
+.blog-title {
+  font-family: $main_font_familyBold;
+  font-size: 24px;
+  text-align: left;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(0,0,0,.1);
+  margin-bottom: 30px;
+}
+
+//btn
+.btn-green {
+  text-transform: uppercase;
+  color: #ffffff;
+  font-family: $main_font_familyBold;
+  font-size: 16px;
+  background: linear-gradient(to top, #80c925, #acdd00);
+  box-shadow: 0 5px 10px rgba(135,204,31,.5);
+  padding: 12px 30px;
+  border-radius: 3px;
+}
+
+.btn-transparent {
+  text-transform: uppercase;
+  font-family: $main_font_familyBold;
+  font-size: 16px;
+  padding: 12px 30px;
+  border-radius: 3px;
+  border: 2px solid #8ecf19;
+  &:hover {
+    padding: 14px 30px;
+    border: none;
+    color: #ffffff;
+    background: linear-gradient(to top, #80c925, #acdd00);
+  }
+}
+
+
+//Hamburger Menu
+.hamburger{
+  background:none;
+  position:absolute;
+  top:0;
+  right:0;
+  line-height:45px;
+  padding: 10px 15px;
+  color:#ffffff;
+  font-family: $main_font_familyBold;
+  border:0;
+  font-size:2.5em;
+  font-weight:bold;
+  cursor:pointer;
+  outline:none;
+  z-index:10000000000000;
+}
+.cross{
+  background:none;
+  position:absolute;
+  top: -5px;
+  right:0;
+  padding: 0 15px;
+  color:#000000;
+  border:0;
+  font-size:4em;
+  line-height:65px;
+  font-weight:bold;
+  cursor:pointer;
+  outline:none;
+  z-index:10000000000000;
+}
+
+@media (max-width:767px) {
+  .header {
+    .nav{
+      left: 0;
+      padding-left: 0;
+      margin-top: 0;
+      z-index:1000000;
+      font-weight:bold;
+      font-size:0.8em;
+      width:100%;
+      background:#f1f1f1;
+      position:absolute;
+      text-align:center;
+    }
+    .nav ul {margin: 0; padding: 0; list-style-type: none; list-style-image: none;}
+    .nav li {
+      background: #f1f1f1;
+      display: block;
+      margin-top: 0;
+      padding:15px 0 15px 0;
+      border-bottom:#dddddd 1px solid;
+    }
+    .nav li:hover{display: block;    background:#ffffff; padding:15px 0 15px 30px; border-bottom:#dddddd 1px solid;}
+    .nav ul .nav__item a { text-decoration:none; text-align: center;  margin: 0; color:#666;}
+    .nav ul li a:hover { color: #666; text-decoration:none;}
+    .nav a{text-decoration:none; color:#666;}
+    .nav a:hover{text-decoration:none; color:#666;}
+
+    .nav__item_link {
+      padding: 0;
+      height: auto;
+    }
+
+    .nav li, .nav li:hover {
+      padding: 0;
+    }
+
+    .nav ul li a {
+      padding: 10px 0;
+    }
+
+    .nav__item_link:active, .nav__item_link:focus, .nav__item_link:hover {
+      background: #ffffff;
+    }
+  }
+}

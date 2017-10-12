@@ -1,0 +1,20 @@
+{
+  "name": "bussines_idea",
+  "authors": [
+    "George <yurayurakh@mail.ru>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass-grid": "^4.0.1"
+  }
+}

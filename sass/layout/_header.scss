@@ -1,0 +1,13 @@
+.header {
+  z-index: 100;
+  width: 100%;
+  padding: 10px 0 0;
+  position: absolute;
+  background: rgba(255,255,255,.1);
+  &__logo {
+    margin-top: 20px;
+  }
+  &__nav {
+    margin-top: 20px;
+  }
+}

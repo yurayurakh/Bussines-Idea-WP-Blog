@@ -12,7 +12,7 @@ var minifyjs = require('gulp-minify');
 
 // Concat js
 gulp.task('scripts', function() {
-    return gulp.src('js-custom/*.js')
+    return gulp.src('js-dist/*.js')
         .pipe(concatjs('common.js'))
         //.pipe(minifyjs(''))
         .pipe(gulp.dest('app/js/'))

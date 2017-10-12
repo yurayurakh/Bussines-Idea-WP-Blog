@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Bussines Idea</title>
 
+    <link rel="stylesheet" href="lib/OwlCarousel2/dist/assets/owl.theme.default.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -85,6 +86,61 @@
 <section class="blog-description">
     <div class="container">
         <div class="row">
+            <div class="similar-post cleafix">
+                <div class="col-xs-12">
+                    <h2 class="blog-title">
+                        Похожие бизнес-идеи и планы
+                    </h2>
+                </div>
+                <div class="col-xs-12">
+                    <div class="owl-carousel">
+                        <div class="col-md-3 col-sm-4 col-xs-6">
+                            <div class="post__item">
+                                <div class="post__item_img">
+                                    <img src="img/post1__img.jpg" alt="post1__img">
+                                </div>
+                                <div class="post__item_text">
+                                    Бизнес-идеи 2017 года — как
+                                    выбрать и c чего начать
+                                </div>
+                                <a class="btn-green" href="/">
+                                    Подробнее
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-6">
+                            <div class="post__item">
+                                <div class="post__item_img">
+                                    <img src="img/post2__img.jpg" alt="post2__img">
+                                </div>
+                                <div class="post__item_text">
+                                    Гаражные бизнес-идеи
+                                    2017 года
+                                </div>
+                                <a class="btn-green" href="/">
+                                    Подробнее
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-6">
+                            <div class="post__item">
+                                <div class="post__item_img">
+                                    <img src="img/post3__img.jpg" alt="post3__img">
+                                </div>
+                                <div class="post__item_text">
+                                    Бизнес на сдаче гаражей
+                                    в аренду
+                                </div>
+                                <a class="btn-green" href="/">
+                                    Подробнее
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-lg-8 col-md-7">
                 <div class="blog-description__text">
                     <p>
@@ -162,7 +218,34 @@
         </div>
     </div>
 </footer>
-<script src="js/jquery.min.js"></script>
+
+<!-- Script include -->
+<script src="lib/jquery/jquery.min.js"></script>
+<script src="lib/OwlCarousel2/dist/owl.carousel.min.js"></script>
 <script src="js/common.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.owl-carousel').owlCarousel({
+            loop:true,
+            margin:10,
+            responsiveClass:true,
+            responsive:{
+                0:{
+                    items:1,
+                    nav:true
+                },
+                600:{
+                    items:3,
+                    nav:false
+                },
+                1000:{
+                    items:5,
+                    nav:true,
+                    loop:false
+                }
+            }
+        })
+    })
+</script>
 </body>
 </html>

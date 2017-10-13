@@ -312,7 +312,7 @@ section {
       font-size: 16px;
       font-family: $main_font_familyBold;
     }
-    .post-title {
+    .blog-title {
       font-size: 14px;
       margin-bottom: 5px;
     }
@@ -406,5 +406,125 @@ section {
   }
   .pagination__control {
     padding: 8px 15px;
+  }
+}
+
+//Owl Carousel
+#owl-two {
+  position: relative;
+  .post__item {
+    margin: 40px 0 50px;
+    &:hover {
+      margin-bottom: 46px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+  }
+  .owl-nav {
+    position: absolute;
+    top: -50px;
+    right: 0;
+    & > div {
+      background: #ffffff;
+      position: relative;
+      display: inline-block;
+      margin-left: 10px;
+      width: 30px;
+      height: 30px;
+      font-size: 0;
+      border: 1px solid #e5e5e5;
+      border-radius: 3px;
+      &:before {
+        text-align: center;
+        margin: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        font-size: 20px;
+        line-height: 24px;
+      }
+      &:hover {
+        transition: all .3s ease;
+        background: linear-gradient(to top, #80c925, #acdd00);
+        box-shadow: 0 0 20px rgba(136,205,30,1);
+        border: none;
+      }
+    }
+    .owl-prev {
+      &:before {
+        content: "<";
+      }
+    }
+    .owl-next {
+      &:before {
+        content: ">";
+      }
+    }
+  }
+}
+
+//Post Slider
+#owl-one {
+  margin-bottom: 30px;
+  .owl-nav {
+    top: 90%;
+    right: 2%;
+    & > div {
+      opacity: .3;
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+    img {
+      width: 100%;
+      max-width: 1140px;
+    }
+}
+
+.owl-carousel {
+  .owl-nav {
+    position: absolute;
+    top: -50px;
+    right: 0;
+    & > div {
+      background: #ffffff;
+      position: relative;
+      display: inline-block;
+      margin-left: 10px;
+      width: 30px;
+      height: 30px;
+      font-size: 0;
+      border: 1px solid #e5e5e5;
+      border-radius: 3px;
+      &:before {
+        text-align: center;
+        margin: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        font-size: 20px;
+        line-height: 24px;
+      }
+      &:hover {
+        transition: all .3s ease;
+        background: linear-gradient(to top, #80c925, #acdd00);
+        box-shadow: 0 0 20px rgba(136,205,30,1);
+        border: none;
+      }
+    }
+    .owl-prev {
+      &:before {
+        content: "<";
+      }
+    }
+    .owl-next {
+      &:before {
+        content: ">";
+      }
+    }
   }
 }

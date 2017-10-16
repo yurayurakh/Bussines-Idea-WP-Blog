@@ -20,8 +20,8 @@ Required: include OptionTree.
 require( trailingslashit( get_template_directory() ) . 'option-tree/ot-loader.php' );
 
 /** Theme Option */
-require( trailingslashit( get_template_directory() ) . 'template/meta-boxes.php' );
-require( trailingslashit( get_template_directory() ) . 'template/theme-options.php' );
+require( trailingslashit( get_template_directory() ) . 'functions/meta-boxes.php' );
+require( trailingslashit( get_template_directory() ) . 'functions/theme-options.php' );
 
 
 function bussines_idea_setup() {
@@ -46,7 +46,7 @@ function bussines_idea_setup() {
 
     // This theme uses wp_nav_menu() in one location.
     register_nav_menus( array(
-        'menu-1' => esc_html__( 'Primary', 'bussines-idea' ),
+        'primary' => esc_html__( 'Primary', 'bussines-idea' ),
     ) );
 
     /*
@@ -107,9 +107,16 @@ add_action( 'wp_enqueue_scripts', 'bussines_idea_style' );
 
 /* Enqueue Scripts **/
 
+function smt_register_scripts() {
+    wp_deregister_script( 'jquery' );
+    wp_register_script( 'jquery', get_template_directory_uri() . '/lib/jquery/jquery.min.js');
+    wp_enqueue_script( 'jquery');
+}
+add_action('wp_enqueue_scripts', 'smt_register_scripts');
+
 function bussines_idea_scripts() {
 
-    //wp_enqueue_script( 'jquery2', get_template_directory_uri() . '/lib/jquery/jquery.min.js', array(''), '',true );
+    //wp_enqueue_script( 'jquery', get_template_directory_uri() . '/lib/jquery/jquery.min.js', array(''), '', true );
     wp_enqueue_script( 'OwlCarousel', get_template_directory_uri() . '/lib/OwlCarousel2/dist/owl.carousel.min.js', array('jquery'), '', true );
     wp_enqueue_script( 'bussines-idea-common-js', get_template_directory_uri() . '/js/common.js', array('jquery'), '',true );
 
@@ -121,6 +128,58 @@ function bussines_idea_scripts() {
 }
 
 add_action( 'wp_enqueue_scripts', 'bussines_idea_scripts' );
+
+
+// My custom form
+function my_search_form( $form ) {
+
+    $form = '
+	<form role="search" method="get" id="searchform" class="search-form" action="' . home_url( '/' ) . '">
+        <input type="text" id="s" class="search-field" placeholder="Введите ваше сообщение ..." value="' . get_search_query() . '" name="s" />
+        <button type="submit" class="search-submit"><span class="hidden-xs">Начать</span> поиск</button>
+    </form>
+	
+	';
+
+    return $form;
+}
+
+add_filter( 'get_search_form', 'my_search_form' );
+
+//Remove name category
+add_filter( 'get_the_archive_title', 'artabr_remove_name_cat' );
+function artabr_remove_name_cat( $title ){
+    if ( is_category() ) {
+        $title = single_cat_title( '', false );
+    } elseif ( is_tag() ) {
+        $title = single_tag_title( '', false );
+    }
+    return $title;
+}
+
+//require get_template_directory() . '/inc/custom-header.php';
+
+/**
++ * Custom template tags for this theme.
++ */
+require get_template_directory() . '/inc/template-tags.php';
+
+/**
++ * Functions which enhance the theme by hooking into WordPress.
++ */
+require get_template_directory() . '/inc/template-functions.php';
+
+/**
++ * Customizer additions.
++ */
+//require get_template_directory() . '/inc/customizer.php';
+
+/**
++ * Load Jetpack compatibility file.
++ */
+//if ( defined( 'JETPACK__VERSION' ) ) {
+//require get_template_directory() . '/inc/jetpack.php';
+//}
 
 
 

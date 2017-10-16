@@ -1836,9 +1836,12 @@ h6 {
 	padding: 0;
 }
 
+.search-block .blog__category {
+	text-align: center;
+}
+
 .search-block .blog__item-link {
-	display: inline-block;
-	text-align: right;
+	margin: 10px;
 	color: #fff;
 	border-bottom: 1px dashed #fff;
 }
@@ -1848,6 +1851,7 @@ h6 {
 }
 
 .blog-post .blog-category__list {
+	text-align: center;
 	margin-top: 10px;
 }
 
@@ -1855,6 +1859,7 @@ h6 {
 	width: 285px;
 	text-align: center;
 	display: inline-block;
+	margin: 0 15px;
 }
 
 .category-post .blog-title {
@@ -1938,6 +1943,11 @@ h6 {
 	opacity: 1;
 }
 
+.footer .social__item img {
+	max-width: 20px;
+	max-height: 20px;
+}
+
 section {
 	padding: 80px 0;
 }
@@ -1956,7 +1966,12 @@ section {
 	display: block;
 }
 
+.logo img {
+	max-width: 200px;
+}
+
 .logo__descr {
+	display: inline;
 	font-size: 18px;
 	font-family: "UbuntuBold";
 	color: #fff;
@@ -1984,11 +1999,11 @@ section {
 	height: 0;
 }
 
-.nav__item {
+.nav__list li {
 	display: inline-block;
 }
 
-.nav__item a {
+.nav__list li a {
 	color: #ffffff;
 	position: relative;
 	display: block;
@@ -1996,7 +2011,7 @@ section {
 	padding-bottom: 28px;
 }
 
-.nav__item a:after {
+.nav__list li a:after {
 	content: "";
 	position: absolute;
 	bottom: 0;
@@ -2011,7 +2026,7 @@ section {
 	transition: all .5s ease;
 }
 
-.nav__item a:hover::after {
+.nav__list li a:hover::after {
 	-webkit-box-shadow: 0 0 20px #86cc20;
 	box-shadow: 0 0 20px #86cc20;
 	background: -webkit-gradient(linear, left bottom, left top, from(#80c925), to(#acdd00));
@@ -2157,7 +2172,7 @@ section {
 		border-bottom: #dddddd 1px solid;
 	}
 
-	.header .nav ul .nav__item a {
+	.header .nav ul li a {
 		text-decoration: none;
 		text-align: center;
 		margin: 0;
@@ -2179,7 +2194,7 @@ section {
 		color: #666;
 	}
 
-	.header .nav__item_link {
+	.header .nav__list li a {
 		padding: 0;
 		height: auto;
 	}
@@ -2193,9 +2208,9 @@ section {
 		padding: 10px 0;
 	}
 
-	.header .nav__item_link:active,
-	.header .nav__item_link:focus,
-	.header .nav__item_link:hover {
+	.header .nav__list li a:active,
+	.header .nav__list li a:focus,
+	.header .nav__list li a:hover {
 		background: #ffffff;
 	}
 }
@@ -2243,9 +2258,12 @@ section {
 	-webkit-border-top-right-radius: 6px;
 	border-top-right-radius: 6px;
 	width: 100%;
+	max-height: 180px;
 }
 
 .post__item_text {
+	font-size: 14px;
+	font-weight: normal;
 	height: 36px;
 	padding: 0 25px;
 	line-height: 18px;
@@ -2256,6 +2274,7 @@ section {
 	position: relative;
 	bottom: 0;
 	overflow: hidden;
+	width: 100%;
 }
 
 .post__item .btn-green {
@@ -2313,6 +2332,7 @@ section {
 
 .alt-post .post-thumb img {
 	width: 100%;
+	height: auto;
 }
 
 .alt-post .post-detail {
@@ -2356,6 +2376,7 @@ section {
 }
 
 .alt-post .post-detail .post-more a {
+	text-decoration: noneh;
 	text-align: center;
 	display: block;
 	margin: auto;
@@ -2740,6 +2761,7 @@ section {
 
 	.search-block .blog__item-link {
 		font-size: 11px;
+		margin: 5px;
 	}
 
 	.search-block .mobile-padding-del {

@@ -14,43 +14,63 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+	<section id="primary" class="blog-post patter-bg">
+		<main id="main" class="site-main container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2 class="blog-title">
+                        Свежие бизнес-идеи и бизнес-планы
+                    </h2>
+                </div>
+            </div>
+            <div class="row">
+                <?php
+                    if ( have_posts() ) :
 
-		<?php
-		if ( have_posts() ) :
+                    if ( is_home() && ! is_front_page() ) : ?>
+                        <header>
+                            <h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
+                        </header>
 
-			if ( is_home() && ! is_front_page() ) : ?>
-				<header>
-					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-				</header>
+                        <?php
+                    endif;
 
-			<?php
-			endif;
+                    /* Start the Loop */
+                    while ( have_posts() ) : the_post();
 
-			/* Start the Loop */
-			while ( have_posts() ) : the_post();
+                        /*
+                         * Include the Post-Format-specific template for the content.
+                         * If you want to override this in a child theme, then include a file
+                         * called content-___.php (where ___ is the Post Format name) and that will be used instead.
+                         */
+                        get_template_part( 'template-parts/home-post', get_post_format() );
 
-				/*
-				 * Include the Post-Format-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_format() );
+                    endwhile;
 
-			endwhile;
+                else :
 
-			the_posts_navigation();
+                    get_template_part( 'template-parts/home-post', 'none' );
 
-		else :
-
-			get_template_part( 'template-parts/content', 'none' );
-
-		endif; ?>
+                endif; ?>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 mobile-padding-del">
+                    <div class="blog-category__list">
+                        <?php $categories = get_categories(array(
+                            'orderby' => 'name',
+                            'order' => 'ASC'
+                        ));
+                        if( $categories ){
+                            foreach( $categories as $cat ){ ?>
+                                <a class="category-blog btn-transparent" href="<?php echo get_category_link( $cat->term_id ) ?>"><?php echo $cat->name ?></a>
+                            <?php  } } ?>
+                    </div>
+                </div>
+            </div>
 
 		</main><!-- #main -->
-	</div><!-- #primary -->
+	</section><!-- #primary -->
 
 <?php
-get_sidebar();
+//get_sidebar();
 get_footer();

@@ -27,33 +27,62 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-5 col-sm-4 col-xs-10">
-                    <a class="header__logo logo" href="/">
-                        <img src="img/logo_white.png" alt="logo header">
-                        <span class="logo__descr">- банк бизнес идей и планов</span>
-                    </a>
+                    <?php if (is_front_page()){ ?>
+                        <span class="header__logo logo">
+                            <?php if(ot_get_option('logo_upload')) {?>
+                                <img src="<?php echo ot_get_option('logo_upload') ?>" alt="logo">
+                            <?php }else { ?>
+                                <h2 class="blog-title">BUSIDEASTO</h2>
+                            <?php } ?>
+                            <?php if(ot_get_option('sub_logo_title')) {?>
+                                <h2 class="logo__descr">- <?php echo ot_get_option('sub_logo_title') ?></h2>
+                            <?php } else { ?>
+                                <h2 class="logo__descr">- банк бизнес идей и планов</h2>
+                            <?php } ?>
+                        </span>
+                    <?php } else { ?>
+                        <a class="header__logo logo" href="<?php echo home_url()?>">
+                            <?php if(ot_get_option('logo_upload')) {?>
+                                <img src="<?php echo ot_get_option('logo_upload') ?>" alt="logo">
+                            <?php }else { ?>
+                                <h2 class="blog-title">BUSIDEASTO</h2>
+                            <?php } ?>
+                            <?php if(ot_get_option('sub_logo_title')) {?>
+                                <h2 class="logo__descr">- <?php echo ot_get_option('sub_logo_title') ?></h2>
+                            <?php } else { ?>
+                                <h2 class="logo__descr">- банк бизнес идей и планов</h2>
+                            <?php } ?>
+                        </a>
+                    <?php } ?>
+
                 </div>
                 <div class="col-lg-6 col-md-7 col-sm-8 float-right">
+
                     <button class="hamburger hidden-lg hidden-md hidden-sm">☰</button>
                     <button class="cross hidden-lg hidden-md hidden-sm" style="display: none;">˟</button>
-                    <nav class="header__nav nav">
-                        <ul class="nav__list">
-                            <li class="nav__item">
-                                <a href="">
-                                    Главная
-                                </a>
-                            </li>
-                            <li class="nav__item">
-                                <a href="">
-                                    Как добиться успеха в бизнесе
-                                </a>
-                            </li>
-                            <li class="nav__item">
-                                <a href="">
-                                    Образец бизнес-плана
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
+                    <?php
+
+                    $args = array(
+                        'theme_location'  => 'primary',
+                        'menu'            => '',
+                        'container'       => 'nav',
+                        'container_class' => 'header__nav nav',
+                        'container_id'    => '',
+                        'menu_class'      => 'nav__list',
+                        'menu_id'         => '',
+                        'echo'            => true,
+                        'fallback_cb'     => 'wp_page_menu',
+                        'before'          => '',
+                        'after'           => '',
+                        'link_before'     => '',
+                        'link_after'      => '',
+                        'items_wrap'      => '<ul class="%2$s">%3$s</ul>',
+                        'depth'           => 0,
+                        'walker'          => ''
+                    );
+
+                    wp_nav_menu($args);
+                    ?>
                 </div>
             </div>
         </div>
@@ -63,29 +92,32 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="titels">
-                        <?php if (is_front_page() && is_home()){ ?>
+                        <?php if (is_front_page()){ ?>
                             <h1 class="main-title">
                                 <?php bloginfo('name') ?>
                             </h1>
                         <?php } else { ?>
                             <h2 class="main-title">
-                                сайт свежих бизнес идей и планов
+                                <?php bloginfo('name') ?>
                             </h2>
                         <?php } ?>
 
                         <h2 class="sub-title">
-                            Бизнес-планы и бизнес-идеи для открытия своего дела с нуля
+                            <?php bloginfo('description') ?>
                         </h2>
                     </div>
-                    <form role="search" method="get" class="search-form" action="">
-                        <input type="search" id="" class="search-field" placeholder="Введите ваше сообщение ..." value="" name="s" />
-                        <button type="submit" class="search-submit"><span class="hidden-xs">Начать</span> поиск</button>
-                    </form>
-                    <div class="col-xs-6 right-text mobile-padding-del">
-                        <a class="blog__item-link" href="/">Бизнес-идеи (220 статей)</a>
-                    </div>
-                    <div class="col-xs-6 mobile-padding-del">
-                        <a class="blog__item-link" href="/">Бизнес-планы (70 статей)</a>
+                    <?php get_search_form(); ?>
+                    <div class="col-xs-12 mobile-padding-del">
+                        <div class="blog__category">
+                            <?php $categories = get_categories(array(
+                                'orderby' => 'name',
+                                'order' => 'ASC'
+                            ));
+                            if( $categories ){
+                                foreach( $categories as $cat ){ ?>
+                                    <a class="blog__item-link" href="<?php echo get_category_link( $cat->term_id ) ?>"><?php echo $cat->name ?> (<?php echo $cat->category_count ?>)</a>
+                            <?php  } } ?>
+                        </div>
                     </div>
                 </div>
             </div>

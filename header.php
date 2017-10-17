@@ -92,7 +92,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="titels">
-                        <?php if (is_front_page()){ ?>
+                        <?php if (is_front_page() && !is_single()){ ?>
                             <h1 class="main-title">
                                 <?php bloginfo('name') ?>
                             </h1>
@@ -115,7 +115,7 @@
                             ));
                             if( $categories ){
                                 foreach( $categories as $cat ){ ?>
-                                    <a class="blog__item-link" href="<?php echo get_category_link( $cat->term_id ) ?>"><?php echo $cat->name ?> (<?php echo $cat->category_count ?>)</a>
+                                    <a class="blog__item-link" href="<?php echo get_category_link( $cat->term_id ) ?>"><?php echo $cat->name ?> (<?php echo $cat->category_count ?> статей)</a>
                             <?php  } } ?>
                         </div>
                     </div>

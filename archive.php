@@ -9,7 +9,7 @@
 
 get_header(); ?>
 
-    <section id="primary" class="blog-post patter-bg">
+    <section id="primary" class="category-post patter-bg">
         <main id="main" class="site-main container">
                 <?php
                 if ( have_posts() ) : ?>
@@ -22,13 +22,13 @@ get_header(); ?>
                         <?php
                         while ( have_posts() ) : the_post();
 
-                            get_template_part( 'template-parts/category-posts', get_post_format() );
+                            get_template_part( 'template/category-posts', get_post_format() );
 
-                        endwhile;
-
-                        the_posts_navigation();
-
-                    else :
+                        endwhile; ?>
+                    <div class="col-xs-12">
+                        <?php echo get_the_posts_pagination();?>
+                    </div>
+                    <?php else :
 
                         get_template_part( 'template-parts/content', 'none' );
 

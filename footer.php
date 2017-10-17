@@ -53,7 +53,7 @@
                     <!-- VK Widget -->
                     <div id="vk_groups"></div>
                     <script type="text/javascript">
-                        VK.Widgets.Group("vk_groups", {mode: 3, width: "350"}, 20003922);
+                        VK.Widgets.Group("vk_groups", {mode: 3, width: "350"}, busideasto);
                     </script>
                 </div>
             </div>

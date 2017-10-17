@@ -1866,6 +1866,17 @@ h6 {
 	margin-bottom: 40px;
 }
 
+.post .page-header .blog-title {
+	border: none;
+	font-size: 28px;
+}
+
+.post article:after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
 .post-content h4,
 .post-content h5,
 .post-content h6,
@@ -1878,9 +1889,15 @@ h6 {
 .post-content h4,
 .post-content h5,
 .post-content h6,
-.post-content h3 {
+.post-content h3, .post-content h2 {
 	margin-bottom: 10px;
 	text-indent: 20px;
+}
+
+.post-content img {
+	width: 100%;
+	margin-left: -20px;
+	height: auto;
 }
 
 .post-content ul,
@@ -2320,7 +2337,7 @@ section {
 	border: 1px solid #e5e5e5;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
-	max-height: 220px;
+	max-height: 190px;
 	margin-bottom: 30px;
 	overflow: hidden;
 }
@@ -2328,25 +2345,26 @@ section {
 .alt-post .post-thumb {
 	float: left;
 	width: 53%;
+	height: 190px;
 }
 
 .alt-post .post-thumb img {
 	width: 100%;
-	height: auto;
+	height: 190px;
 }
 
 .alt-post .post-detail {
 	position: relative;
-	height: 220px;
-	max-height: 220px;
+	height: 190px;
+	max-height: 190px;
 	float: left;
 	width: 47%;
 	vertical-align: top;
-	padding: 20px;
+	padding: 10px;
 }
 
 .alt-post .post-detail .category-title {
-	font-size: 16px;
+	font-size: 14px;
 	font-family: "UbuntuBold";
 }
 
@@ -2376,7 +2394,7 @@ section {
 }
 
 .alt-post .post-detail .post-more a {
-	text-decoration: noneh;
+	text-decoration: none;
 	text-align: center;
 	display: block;
 	margin: auto;
@@ -2421,12 +2439,7 @@ section {
 	list-style: none;
 }
 
-.pagination__item {
-	display: inline-block;
-	margin-right: 10px;
-}
-
-.pagination__item a {
+.pagination__list span, .pagination__list a {
 	background: #ffffff;
 	display: inline-block;
 	height: 30px;
@@ -2437,16 +2450,24 @@ section {
 	border: 1px solid #e5e5e5;
 	-webkit-border-radius: 3px;
 	border-radius: 3px;
+	margin: 0 5px;
 }
 
-.pagination__item a:hover {
+
+
+.pagination__list a:hover , .pagination__list span:hover {
 	border: 2px solid #8ecf19;
 	height: 29px;
 	line-height: 29px;
 }
 
-.pagination .dots a {
+
+.pagination__list .dots {
 	width: 10px;
+	border: none;
+}
+
+.pagination__list .dots:hover {
 	border: none;
 }
 
@@ -2462,8 +2483,33 @@ section {
 	color: #39434d;
 }
 
-.pagination .pagination__control {
+.pagination .next, .pagination .prev {
 	padding: 8px 15px;
+	text-transform: uppercase;
+	color: #ffffff;
+	font-family: "UbuntuBold";
+	font-size: 16px;
+	background: -webkit-gradient(linear, left bottom, left top, from(#80c925), to(#acdd00));
+	background: -webkit-linear-gradient(bottom, #80c925, #acdd00);
+	background: -o-linear-gradient(bottom, #80c925, #acdd00);
+	background: linear-gradient(to top, #80c925, #acdd00);
+	-webkit-box-shadow: 0 5px 10px rgba(135, 204, 31, 0.5);
+	box-shadow: 0 5px 10px rgba(135, 204, 31, 0.5);
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	height: auto;
+	width: auto;
+	display: inline;
+	line-height: normal;
+	border: none;
+}
+
+.pagination .next:hover, .pagination .prev:hover {
+	border: none;
+	background: -webkit-gradient(linear, left bottom, left top, from(#acdd00), to(#80c925));
+	background: -webkit-linear-gradient(bottom, #acdd00, #80c925);
+	background: -o-linear-gradient(bottom, #acdd00, #80c925);
+	background: linear-gradient(to top, #acdd00, #80c925);
 }
 
 #owl-two {
@@ -2708,6 +2754,16 @@ section {
 		padding-right: 0;
 	}
 
+
+	.alt-post, .alt-post .post-thumb, .alt-post .post-thumb img, .alt-post .post-detail {
+		height: 220px;
+	}
+
+	.alt-post .post-detail {
+		padding: 20px;
+	}
+
+
 	#owl-one {
 		margin-bottom: 30px;
 	}
@@ -2875,7 +2931,7 @@ section {
 	}
 
 	.category-post .alt-post .post-detail .post-content {
-		max-height: 28%;
+		max-height: 40%;
 	}
 
 	.category-post .alt-post .post-detail .post-more {
@@ -2883,6 +2939,7 @@ section {
 	}
 
 	.category-post .alt-post .post-detail .post-more a {
+		margin-top: 5px;
 		font-size: 12px;
 	}
 

@@ -15,7 +15,7 @@
                 <?php if (get_the_post_thumbnail( )) { ?>
                     <?php echo get_the_post_thumbnail( ); ?>
                 <?php }else { ?>
-                    <img src="<?php echo get_template_directory_uri() ?>/img/img/category-post1.jpg" alt="post">
+                    <img src="<?php echo get_template_directory_uri() ?>/img/post1__img.jpg" alt="post">
                 <?php } ?>
             </div>
 
@@ -25,12 +25,7 @@
                     the_title( '<h2 class="category-title">', '</h2>' );
                 ?>
                 <div class="post-content">
-                    Сегодня мы рассмотрим идею для
-                    своего бизнеса по мобильной
-                    продаже кофе. Как открыть бизнес
-                    кофейни на колесах, какие документы
-                    нужно получить для старта бизнеса
-                    по передвижной продаже кофе....
+                    <?php echo  $content = get_the_content();?>
                     <div class="post-more">
                         <a href="<?php echo esc_url( get_permalink() ); ?>">Читать далее</a>
                     </div>

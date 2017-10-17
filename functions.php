@@ -157,6 +157,24 @@ function artabr_remove_name_cat( $title ){
     return $title;
 }
 
+
+//Pagination
+add_filter('navigation_markup_template', 'my_navigation_template', 10, 2 );
+function my_navigation_template( $template, $class ){
+
+
+    return '
+	<nav class="navigation %1$s" role="navigation">
+		<div class="pagination__list">%3$s</div>
+	</nav>    
+	';
+}
+
+// выводим пагинацию
+the_posts_pagination( array(
+    'end_size' => 2,
+) );
+
 //require get_template_directory() . '/inc/custom-header.php';
 
 /**

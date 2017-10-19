@@ -8,7 +8,6 @@
  */
 
 ?>
-    <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
         <div class="post__item">
             <div class="post__item_img">
                 <?php if (get_the_post_thumbnail( )) { ?>
@@ -18,10 +17,11 @@
                 <?php } ?>
             </div>
             <?php
-            the_title( '<h2 class="post__item_text">', '</h2>' );
+            the_title( '<div class="post__item_text">', '</div>' );
             ?>
             <a class="btn-green" href="<?php echo esc_url( get_permalink() ); ?>">
                 Подробнее
             </a>
         </div>
-    </article><!-- #post-<?php the_ID(); ?> -->
+
+

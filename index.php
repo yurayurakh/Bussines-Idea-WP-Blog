@@ -62,7 +62,7 @@ get_header(); ?>
                         ));
                         if( $categories ){
                             foreach( $categories as $cat ){ ?>
-                                <a class="category-blog btn-transparent" href="<?php echo get_category_link( $cat->term_id ) ?>"><?php echo $cat->name ?></a>
+                                <a class="category-blog btn-transparent" href="<?php echo get_category_link( $cat->term_id ) ?>">Все <?php echo $cat->name ?></a>
                             <?php  } } ?>
                     </div>
                 </div>

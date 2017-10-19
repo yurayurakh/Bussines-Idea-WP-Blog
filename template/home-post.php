@@ -19,7 +19,7 @@
                 <?php } ?>
             </div>
             <?php
-                the_title( '<h2 class="post__item_text">', '</h2>' );
+                the_title( '<div class="post__item_text">', '</div>' );
             ?>
             <a class="btn-green" href="<?php echo esc_url( get_permalink() ); ?>">
                 Подробнее

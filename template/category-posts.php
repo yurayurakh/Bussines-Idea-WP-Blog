@@ -22,7 +22,7 @@
 
             <div class="post-detail">
                 <?php
-                    the_title( '<h2 class="category-title">', '</h2>' );
+                    the_title( '<div class="category-title">', '</h2>' );
                 ?>
                 <div class="post-content">
                     <?php echo  $content = get_the_content();?>

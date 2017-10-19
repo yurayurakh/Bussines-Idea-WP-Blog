@@ -45,5 +45,11 @@
     </div><!-- .entry-content -->
 
 </article><!-- #post-<?php the_ID(); ?> -->
+<?php
+$get_related = get_theme_option('related_on'); if($get_related == 'Enable'):
+    get_template_part( 'lib/templates/related-by-tags' );
+endif
+?>
+
 
 

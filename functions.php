@@ -99,6 +99,7 @@ add_action( 'widgets_init', 'bussines_idea_widgets_init' );
 function bussines_idea_style() {
     wp_enqueue_style( 'bussines-idea-style', get_stylesheet_uri() );
 
+    wp_enqueue_style( 'OwlCarousel', get_template_directory_uri() . '/lib/OwlCarousel2/dist/assets/owl.carousel.min.css', array('bussines-idea-style'));
     wp_enqueue_style( 'OwlCarousel', get_template_directory_uri() . '/lib/OwlCarousel2/dist/assets/owl.theme.default.min.css', array('bussines-idea-style'));
 
 }

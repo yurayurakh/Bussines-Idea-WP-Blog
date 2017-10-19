@@ -17,8 +17,6 @@ get_header(); ?>
 
                     get_template_part( 'template/post', get_post_type() );
 
-                    //the_post_navigation();
-
                     // If comments are open or we have at least one comment, load up the comment template.
                     if ( comments_open() || get_comments_number() ) :
                         comments_template();
@@ -47,22 +45,35 @@ get_header(); ?>
         <div class="row">
             <div class="similar-post clearfix">
                 <div class="col-xs-12">
-                    <h2 class="blog-title">
+                    <div class="blog-title">
                         Похожие бизнес-идеи и планы
-                    </h2>
+                    </div>
                 </div>
                 <div class="col-xs-12">
                     <div class="owl-carousel" id="owl-two">
-                        <?php while ( have_posts() ) : the_post();
+                        <?php
+                        function my_related_posts() {
 
-                        /*
-                        * Include the Post-Format-specific template for the content.
-                        * If you want to override this in a child theme, then include a file
-                        * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-                        */
-                        get_template_part( 'template/similar-post', get_post_format() );
+                            $tags = the_tags('');
 
-                        endwhile; ?>
+                            $args = array(
+                                'posts_per_page' => 12,
+                                'post__in'  => $tags,
+                            );
+
+                            $the_query = new WP_Query( $args );
+
+                            while ( $the_query->have_posts() ) : $the_query->the_post();
+                                get_template_part( 'template/similar-post', get_post_format() ); ?>
+                                <?php
+                            endwhile;
+
+
+                            wp_reset_postdata();
+
+                        }
+                        ?>
+                        <?php my_related_posts() ?>
                     </div>
                 </div>
             </div>
@@ -70,30 +81,9 @@ get_header(); ?>
         <div class="row">
             <div class="col-lg-8 col-md-7">
                 <div class="blog-description__text">
-                    <p>
-                        Обстоятельства, которые приводят к мысли начать собственное дело и быть независимым от работодателя
-                        у каждого человека свои.
-                    </p>
-                    <p>
-                        Но если Вы все же решились заняться собственным бизнесом, стоит вопрос с чего начинать.
-                        И первый шаг, чтобы начать собственное дело, так это определится с бизнес - идеей.
-                    </p>
-                    <br/>
-                    <p>
-                        Главное при этом, чтобы нравилось то, чем Вы собираетесь заняться, и самым простым решением
-                        будет превращение хобби в бизнес.
-                    </p>
-                    <p>
-                        Например, если умеете хорошо готовить кондитерские изделия или пирожки, то можно делать
-                        продукцию на заказ, связавшись со специализированными агентствами по организации торжеств или
-                        реализуя свою продукцию непосредственно на рынке. Или если хорошо разбираетесь в автомобилях,
-                        то можно организовать бизнес по ремонту автомобилей.
-                    </p>
-                    <br/>
-                    <p>
-                        Но если Вы хотите организовать успешный бизнес в более широком плане, то необходимо найти бизнес-идею,
-                        которая отличается от других. При этом не обязательно, чтобы это было совершенно новое, необычное.
-                    </p>
+                    <?php if(ot_get_option('footer_textarea')) {?>
+                        <?php echo ot_get_option('footer_textarea') ?>
+                    <?php } ?>
                 </div>
             </div>
             <div class="col-lg-4 col-md-5">
@@ -108,7 +98,7 @@ get_header(); ?>
                     <!-- VK Widget -->
                     <div id="vk_groups"></div>
                     <script type="text/javascript">
-                        VK.Widgets.Group("vk_groups", {mode: 3, width: "350"}, busideasto);
+                        VK.Widgets.Group("vk_groups", {mode: 3, width: "350"}, <?php if(ot_get_option('footer_vk-group')) { echo ot_get_option('footer_vk-group'); }?> );
                     </script>
                 </div>
             </div>
@@ -128,23 +118,13 @@ get_header(); ?>
                 </div>
             </div>
             <div class="col-md-3 mobile-top">
-
                 <div class="social">
-                    <a href="" class="social__item">
-                        <img src="img/icon/vk-icon.png" alt="vk-icon">
-                    </a>
-                    <a href="" class="social__item">
-                        <img src="img/icon/fb-icon.png" alt="fb-icon">
-                    </a>
-                    <a href="" class="social__item">
-                        <img src="img/icon/tw-icon.png" alt="tw-icon">
-                    </a>
-                    <a href="" class="social__item">
-                        <img src="img/icon/vk-icon.png" alt="ok-icon">
-                    </a>
-                    <a href="" class="social__item">
-                        <img src="img/icon/g+-icon.png" alt="g+-icon">
-                    </a>
+                    <?php if(ot_get_option('footer_social_links')) {?>
+                        <?php foreach (ot_get_option('footer_social_links') as $social){ ?>
+                            <a href="<?php echo $social['social_link_url']?>" class="social__item">
+                                <img src="<?php echo $social['social_icon_name']?>" alt="social">
+                            </a>
+                        <?php } } ?>
                 </div>
             </div>
         </div>
@@ -155,13 +135,7 @@ get_header(); ?>
 <?php wp_footer(); ?>
 <script>
     $(document).ready(function () {
-        $('#owl-one').owlCarousel({
-            loop: true,
-            items: 1,
-            nav: true,
-            dots: true
-        });
-        $('#owl-two').owlCarousel({
+        $('.owl-carousel').owlCarousel({
             loop: true,
             margin: 30,
             stagePadding: 25,
